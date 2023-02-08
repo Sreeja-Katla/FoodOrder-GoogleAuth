@@ -1,6 +1,6 @@
 .fluid-container{
     height: 500px;
-    /* height: fit-content; */
+    height: fit-content;
 }
 .card{
     width:30%;

@@ -52,7 +52,6 @@ export class CartComponent implements OnInit {
   alert("hello");
   
   }
-
   
   //DECREMENT
   dec(quantity: number,id:number){

@@ -20,8 +20,6 @@ addToCart(item:any){
    console.log(item);
    this.cartDataList.push(item);
    console.log(this.cartDataList); 
-
-   
 }
 
 removeCartData(product:any){

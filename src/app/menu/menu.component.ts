@@ -45,12 +45,18 @@ export class MenuComponent implements OnInit {
     this.filterCategory = this.fs.getAll()
   }
 
-  showDetails(index: number, modal: any) {
+  showDetails(id: number, modal: any) {
+    console.log(this.filterCategory);
+    // console.log(this.filterCategory[id-1]);
+
+
     this.show = true;
     this.modal_popup.open(modal);
-    console.log(this.foods[index]);
-    console.log(index);
-    this.itemDetail = this.foods[index];
+    // console.log(this.foods[id]);
+    // console.log(id);
+    this.itemDetail = this.filterCategory[id];
+    console.log(this.itemDetail);
+
   }
 
   onOrder(cartItem: {}) {
@@ -74,12 +80,17 @@ export class MenuComponent implements OnInit {
   }
 
   filter(category: string) {
+    console.log(this.foods);
+
     this.filterCategory = this.foods
-      .filter((a:any) => {
-        if (a.category == category || category == '') {
+      .filter((a: any) => {
+        // console.log(a);giving prod obj
+
+        if (a.category == category || category=== '') {
           return a;
         }
-        console.log(a.category);
       })
+    console.log(this.filterCategory);
+
   }
 }

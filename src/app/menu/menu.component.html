@@ -1,10 +1,10 @@
 <div class="fluid-container">
-
+<!-- <div>
   <div class="search" style="margin-top: 10px;margin-bottom: 10px;">
     <app-search (searchText)="onSearchTextEntered($event)"></app-search>
 
-    <!-- <app-filter></app-filter> -->
-    <div class="container d-flex" style="margin-left:410px;">
+     
+    <div class="container d-flex" style="margin-left:350px;">
       <div class="items d-inline">
         <a (click)="filter('')">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLwC1Ha0v_FNcR3X2mKGVwYiuMIA3T-JIPw&usqp=CAU"
@@ -59,6 +59,82 @@
     </div>
 
   </div>
+</div> -->
+ 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="search" style="margin-top: 10px;margin-bottom: 10px;">
+    <app-search (searchText)="onSearchTextEntered($event)"></app-search>
+  </div>
+
+  <div class="navbar-collapse" id="navbarNav" >
+    <ul class="navbar-nav">
+      <li style="margin-left:10px;">
+        <div class="items">
+          <a (click)="filter('')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLwC1Ha0v_FNcR3X2mKGVwYiuMIA3T-JIPw&usqp=CAU"
+              alt="image" title="All" style="width:80px; height:80px;border-radius: 50px;">
+          </a><br>
+          <b style="margin-left :25px;;">All</b>
+        </div>
+      </li>
+      <li  style="margin-left:10px;">
+        <div class="items ">
+          <a (click)="filter('veg')">
+            <img
+              src="https://img.freepik.com/premium-photo/indian-veg-rajasthani-thali-food-platter-consists-variety-veggies-lentils-sweet-dish-snacks-etc-selective-focus_726363-570.jpg?w=2000"
+              alt="image" title="Veg" style="width:80px; height:80px;border-radius: 50px;"><br>
+            <b style="margin-left :25px;;">Veg</b>
+          </a>
+        </div>
+        </li>
+      <li style="margin-left:10px;">
+        <div class="items">
+          <a (click)="filter('non-veg')">
+            <img src="https://images.pexels.com/photos/9609846/pexels-photo-9609846.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="image" title="non-veg" style="width:80px; height:80px;border-radius: 50px;"><br>
+            <b>Non-Veg</b>
+          </a>
+        </div>
+      </li>
+      <li style="margin-left:25px;">
+        <div class="items">
+          <a (click)="filter('pizza')">
+            <img src="https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="image" title="Pizza" style="width:80px; height:80px;border-radius: 50px;margin-left: -15px;"><br>
+            <b>Pizza</b>
+          </a>
+        </div>
+      </li>
+      <li style="margin-left:20px;">
+        <div class="items">
+          <a (click)="filter('burger')">
+            <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="image" title="Burger" style="width:80px; height:80px;border-radius: 50px;margin-left: -10px;"><br>
+            <b>Burger</b>
+          </a>
+        </div>
+      </li>
+      <li style="margin-left:20px;">
+        <div class="items">
+          <a (click)="filter('sweets')">
+            <img
+              src="https://images.pexels.com/photos/5084352/pexels-photo-5084352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="image" title="Sweets" style="width:80px; height:80px;border-radius: 50px; margin-left: -10px;"><br>
+            <b>Sweets</b>
+          </a>
+        </div>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+<!-- ITEMS DETAILS -->
   <div class="card">
     <ul>
       <li *ngFor="let food of filterCategory;let i=index">
