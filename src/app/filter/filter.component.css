@@ -1,0 +1,15 @@
+.container{
+    margin-left: 500px;
+    margin-top: 30px;
+    display: flex;
+}
+img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 30px;
+    border-radius: 50px;
+    margin-left: 10px;
+}
+.items{
+    display:flexbox;
+}

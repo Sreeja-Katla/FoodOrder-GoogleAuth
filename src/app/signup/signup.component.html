@@ -1,0 +1,86 @@
+<div class="fluid-container">
+    <div class="form">
+     <h1 class="Registration">Registration Form</h1>
+     <form (ngSubmit)="onSubmit()" #MyForm="ngForm">
+  
+  
+      <label for="fname">First Name:</label>
+      <input type="text" id="fname" placeholder="enter your FirstName"
+       name="FirstName" ngModel required #fname="ngModel">
+       <div>
+        <small *ngIf="fname.invalid && fname.touched">*FirstName is required</small>
+       </div>
+  
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" placeholder="Enter your LastName"
+       name="LastName"  ngModel required #Lname="ngModel">
+       
+       <div>
+        <small *ngIf="Lname.invalid&&Lname.touched">*LastName is required</small>
+       </div>
+      
+        
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="enter your email"
+       name="email" ngModel required email #Email="ngModel">
+  
+      <div>
+        <small *ngIf="Email.invalid && Email.touched">*Email is required</small>
+      </div>
+  
+      <label for="number">Phone-Number:</label>
+      <input type="number" id="number" placeholder="enter your phoneNumber"
+       name="phoneNumber"  ngModel="Number" required number #number="ngModel"><br><br>
+   
+       <div>
+        <small *ngIf="number.invalid && number.touched">*Phone-number is required</small>
+      </div>
+
+
+      <!-- <small *ngIf="UserDetails.invalid && UserDetails.touched">*Above fields are required</small> -->
+      <!-- <div>
+        <button class="DefaultValues" (click)="SetDefaultValues()"> Set DefaultValues</button>
+      </div> -->
+  
+  
+  
+      <label for="country">Country:</label>
+      <select id="country" name="country"  [ngModel]="DefaultCountry">
+       <option value="India">India</option>
+       <option value="USA">USA</option>
+       <option value="Australia">Australia</option>
+       <option value="Canada">Canada</option>
+       <option value="Europe">Europe</option>
+      </select><br><br>
+      
+      <label for="gender">Gender:</label>
+  
+      <span *ngFor="let gen of gender">
+        <input type="Radio" id={{gen.id}} value={{gen.value}} name="gender"  [ngModel]="defaltgen">
+      <label for="{{gen.value}}">{{gen.value}}</label>
+      </span>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password" name="password"  ngModel required #password="ngModel">
+       
+      <label for="Re-password">Re-Password:</label>
+      <input type="password" id="Re-password" placeholder="Confirm your password" name="Repassword"  ngModel required #Repassword="ngModel">
+       
+      <small *ngIf="password.value!=Repassword.value && Repassword.touched "><h6>*Enter  your correct Password</h6></small>
+
+       <div class="button">
+       <!-- <button value="Submit" class="submit">Submit</button> -->
+      <input type="submit" value="Submit" class="submit">   
+      <!-- [disabled]="!MyForm.valid" -->
+      <input type="reset" value="Clear" class="reset">
+      </div>
+      <small *ngIf="MyForm.invalid && MyForm.submitted">*Above fields are required to fill</small>
+      <h6>Already having an Account?<a href="/home">Sign in</a> </h6>
+
+
+     </form>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,68 @@
+.fluid-container{
+    width: 500px;
+    background-color: #f2f2f2;
+    margin-left: 450px;
+   padding-bottom: 20px;
+    margin-bottom: 60px;
+}
+.Registration{
+      margin:25px 0px 30px 20px;
+      padding-top: 20px;  
+}
+input[type=text],[type=email],[type=number],[type=password]{
+    width:90%;
+    height: 40px;
+    margin: 13px 20px 10px 20px;
+    border-radius: 10px;
+}
+select{
+    width:90%;
+    height: 35px;
+    margin: 13px 20px 10px 20px;
+}
+label{
+    margin: 10px 20px 10px 20px;
+    font-size: larger;
+}
+label[for=gender]{
+    margin-bottom: 30px;
+}
+.button{
+    display: flex;
+    margin: 40px 0px 20px 30px;
+}
+input[type=reset],[type=submit]{
+    margin-right: 50px;
+    width:40%;
+    height: 40px;
+    color: #fff;
+}
+.reset{
+    background-color: rgb(168, 64, 26);
+}
+.submit{
+    background-color: green;
+}
+input.ng-invalid.ng-touched{
+    border: red 1px solid;
+}
+form.ng-invalid.ng-submitted{
+    border: red 1px solid;
+}
+small{
+    color: red;
+    margin-left: 50px;
+}
+
+h6{
+text-align: center;
+}
+.DefaultValues{
+    margin-left:23px;
+}
+.form-data{
+    background-color: lightgray;
+    margin-top:100px;
+    padding-left: 20px;
+
+}

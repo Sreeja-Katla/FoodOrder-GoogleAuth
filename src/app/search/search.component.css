@@ -1,0 +1,12 @@
+.container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display:flex;
+    width: 40%;
+}
+/* span{
+    margin-right: 10px;
+} */
+input{
+    border-radius: 10px;
+}

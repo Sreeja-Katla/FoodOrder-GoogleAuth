@@ -1,0 +1,144 @@
+<div class="fluid-container">
+
+  <div class="search" style="margin-top: 10px;margin-bottom: 10px;">
+    <app-search (searchText)="onSearchTextEntered($event)"></app-search>
+
+    <!-- <app-filter></app-filter> -->
+    <div class="container d-flex" style="margin-left:410px;">
+      <div class="items d-inline">
+        <a (click)="filter('')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLwC1Ha0v_FNcR3X2mKGVwYiuMIA3T-JIPw&usqp=CAU"
+            alt="image" title="All" style="width:80px; height:80px;border-radius: 50px;">
+          <b style="margin-left :25px;;">All</b>
+        </a>
+
+      </div>
+      <div class="items d-inline">
+        <a (click)="filter('veg')">
+          <img
+            src="https://img.freepik.com/premium-photo/indian-veg-rajasthani-thali-food-platter-consists-variety-veggies-lentils-sweet-dish-snacks-etc-selective-focus_726363-570.jpg?w=2000"
+            alt="image" title="Veg" style="width:80px; height:80px;border-radius: 50px;">
+          <b style="margin-left :25px;;">Veg</b>
+        </a>
+
+      </div>
+      <div class="items">
+        <a (click)="filter('non-veg')">
+          <img src="https://images.pexels.com/photos/9609846/pexels-photo-9609846.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="image" title="non-veg" style="width:80px; height:80px;border-radius: 50px;">
+          <b>Non-Veg</b>
+        </a>
+
+      </div>
+      <div class="items">
+        <a (click)="filter('pizza')">
+          <img src="https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="image" title="Pizza" style="width:80px; height:80px;border-radius: 50px;margin-left: -15px;">
+          <b style="margin-left :15px;;">Pizza</b>
+        </a>
+
+      </div>
+      <div class="items">
+        <a (click)="filter('burger')">
+          <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="image" title="Burger" style="width:80px; height:80px;border-radius: 50px;margin-left: -10px;">
+          <b>Burger</b>
+        </a>
+
+      </div>
+      <div class="items">
+        <a (click)="filter('sweets')">
+          <img
+            src="https://images.pexels.com/photos/5084352/pexels-photo-5084352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="image" title="Sweets" style="width:80px; height:80px;border-radius: 50px; margin-left: -10px;">
+          <b>Sweets</b>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card">
+    <ul>
+      <li *ngFor="let food of filterCategory;let i=index">
+        <!-- <div *ngFor="l"> -->
+        <div *ngIf="searchText === '' || food.name.toLowerCase().includes(searchText)">
+          <a>
+
+            <img src="{{ food.imgUrl }}" alt="food images" (click)="showDetails(i,popup)">
+            <div class="content">
+              <div class="name" style="text-align:center">
+                <h3>{{food.name}}</h3>
+              </div>
+              <div class="price" style="text-align:center;">
+                <h5> RS. {{food.price}}</h5>
+              </div>
+              <div class="rate" style="color:black;">
+                <div>
+                  <p>Rating:{{food.rating}}</p>
+                </div>
+                <div>
+                  <button class="btn btn-success" (click)="showDetails(i,popup)" data-bs-toggle="modal"
+                    data-bs-target="#popup">Details</button>
+                </div>
+
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- </div> -->
+      </li>
+
+    </ul>
+  </div>
+
+</div>
+
+
+
+<ng-template #popup let-modal>
+  <div class="card" style="width:600px; height: 500px;" *ngIf="show">
+    <div class="Item-details">
+      <div class="item">
+        <!-- <img src="{{itemDetail.imgUrl}}" alt=""> -->
+
+        <div class="card carousel">
+          <ngb-carousel>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="{{itemDetail.imgUrl}}" alt="Random first slide" />
+              </div>
+            </ng-template>
+
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="{{itemDetail.imgUrl1}}" alt="Random second slide" />
+              </div>
+            </ng-template>
+
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="{{itemDetail.imgUrl2}}" alt="Random third slide" />
+              </div>
+            </ng-template>
+
+          </ngb-carousel>
+        </div>
+
+      </div>
+      <h2 style="color: red; text-align: center;">{{itemDetail.name}}</h2>
+      <h5 style="color: red; text-align: center;"><b>Price:</b>Rs. {{itemDetail.price}}</h5>
+      <p><b>Description:</b>{{itemDetail.description}}</p>
+      <div style="display:flex ;">
+        <p><b>Rating:</b>{{itemDetail.rating}}</p>
+        <div class=" buttons">
+          <button class="btn btn-warning" (click)="closePopUp()">Close</button>
+          <button class="btn btn-danger" (click)="onOrder(itemDetail)">Order</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>

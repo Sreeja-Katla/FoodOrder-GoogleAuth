@@ -1,0 +1,40 @@
+ <div class="container" >
+
+<a (change)="fileChangeEvent($event,popup)"><img src="{{imageupload}}"  style="width:100px;height: 100px;"></a>
+<input type="file" (change)="fileChangeEvent($event,popup)" data-bs-toggle="modal" data-bs-target="#popup" />
+    
+    
+</div>
+
+
+
+<ng-template #popup let-modal >
+<div>
+    <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 4"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imgLoad()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+    
+></image-cropper>
+    
+</div>
+
+<div class="col-md-4">
+    <h6>Image Preview</h6>
+   <img [src]="croppedImage" alt="IMG" style="width:200px;height:200px"/>
+   </div>
+   <div>
+    <button (click)="uploadImage()">Upload</button>
+   </div>
+
+</ng-template>
+
+
+
+
+

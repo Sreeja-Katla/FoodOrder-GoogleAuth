@@ -1,0 +1,11 @@
+/* asl-google-signin-button{
+    width: 100px;
+} */
+.google{
+display: flex;
+margin-top: 20px;
+}
+button{
+    height: 33px;
+    padding-top: 5px;
+}

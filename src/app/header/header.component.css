@@ -1,0 +1,75 @@
+header {
+  background-color: red;
+  padding: 0px;
+  border-bottom: 2px solid red;
+  color: white;
+}
+a {
+  color: white;
+}
+a:hover {
+  background-color: brown;
+}
+li{
+  margin-bottom:-10px;
+}
+.fluid-container {
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -20px;
+  margin-bottom: -10px;
+}
+a.logo {
+  font-weight: bold;
+  padding: 1em;
+  padding-left: 0px;
+  justify-content: start;
+  font-size: 30px;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+nav ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+nav ul li a {
+  padding: 10px;
+  display: inline-block;
+  margin-top: 50px;
+  /* margin-bottom: 40px; */
+}
+nav ul {
+  display: flex;
+}
+/* ul{
+    margin-right: 150px;
+} */
+.image-crop {
+  position: relative;
+  margin-left: 30px;
+}
+i {
+  color: white;
+  background-color: aliceblue;
+}
+.dropdown {
+  margin-top: 10px;
+  color: white;
+}
+.btn {
+  color: white;
+}
+.userDetails{
+  width:60%;
+}
+img{
+  border-radius: 50px;
+}
+input{
+ width: 50px;
+ height: 50px;
+}
+.my-file-input::-webkit-file-upload-button{
+  visibility: hidden;
+  }

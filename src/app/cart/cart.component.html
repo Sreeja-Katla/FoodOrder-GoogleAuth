@@ -1,0 +1,70 @@
+
+
+
+<div class="fluid-container">
+    <div class="cart-product" *ngIf="cartItem.length!=0">
+        <table class="table table-responsive" class="table table-bordered">
+
+     <!-- <thead> -->
+            <tr>
+                <th>S.no.</th>
+                <th>Item Image</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+    <!-- </thead> -->
+                <tr *ngFor="let item of cartItem,let i=index">
+                    <th>{{i+1}}</th>
+                    <th><img src="{{item.imgUrl}}" alt="Image" style="width:300px; height:200px"></th>
+                    <th>{{item.name}}</th>
+                    <th>Rs.{{item.price}}</th>
+                    <th>
+                        <div  class="quantity">
+                       <button type="button" class="btn" (click)="dec(item.quantity,item.id)"><i class="fa fa-minus-circle"></i>
+                       </button>
+                       <span>{{item.quantity}}</span>
+                       <button type="button" class="btn"  (click)="inc(item.quantity,item.id)"><i class="fa fa-plus-circle"></i>
+                    </button>
+                </div>
+                      
+                    </th>
+                    <th>Rs.{{item.price *item. quantity}}</th>
+                    <th><button class="removeItem" class="btn btn-danger" style="background-color:red;" (click)="removeItem(item)"><i class="fa fa-trash-o"></i></button></th>
+                </tr>
+        </table>
+        <div class="details">
+            <div>
+                <h3><strong>Total Price:</strong>{{total}}</h3>
+               </div>
+
+            <div class="buttons">
+                <button class="btn btn-warning" (click)="shopMore()">Menu</button>
+                <button class="btn btn-danger" (click)="removeAll()">RemoveALL</button>
+                <button (click)="makePayment(total)" class="btn btn-primary btn-block">Pay Rs.{{total}}</button>
+           
+            </div>
+
+           
+            
+
+           
+    </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="card"*ngIf="cartItem.length==0">
+        <h3>Your Cart is Empty!</h3>
+        <p>Add new Items to Cart..</p>
+        <button class="btn btn-danger" (click)="onOrder()">OrderNow</button>
+
+    </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="fluid-container">
+
+ <div class="card carousel">
+	<ngb-carousel *ngIf="images">
+		<ng-template ngbSlide>
+			<div class="picsum-img-wrapper">
+				<img [src]="images[0]" alt="Random first slide" style="width:100%; height:500px" />
+			</div>
+		</ng-template>
+
+		<ng-template ngbSlide>
+			<div class="picsum-img-wrapper">
+				<img [src]="images[1]" alt="Random second slide" style="width:100%; height:500px" />
+			</div>
+		</ng-template>
+
+		<ng-template ngbSlide>
+			<div class="picsum-img-wrapper">
+				<img [src]="images[2]" alt="Random third slide" style="width:100%; height:500px;" />
+			</div>
+		</ng-template>
+
+	</ngb-carousel>
+ </div>
+
+<div class="login">
+
+	<form class="form"  #UserForm="ngForm" id="form">
+		<h2>Login Form</h2>
+		<div class="input">
+			<label for="email">Email:</label>
+			<div class="input-icons">
+                <i class="fa fa-envelope icon"></i>
+                <input class="input-field" id="email" type="text" placeholder="Email" name="userEmail" ngModel required email #UserEmail="ngModel">
+            </div>
+
+			<label for="email">Password:</label>
+            <div class="input-icons">
+                <i class="fa fa-key icon"></i>
+                <input class="input-field" type="password" placeholder="Password"  name="userPassword" ngModel required #UserPassword="ngModel" >
+            </div>
+		</div>
+		
+			<button class="btn btn-success"  (click)="getData(UserForm)">Login</button>
+			<button class="btn btn-danger">Reset</button>
+		
+	</form>
+	<div>
+		<small *ngIf="UserForm.invalid && UserForm.touched" style="color:red;">*UserEmail and password are required</small>
+	</div>
+	<small>Not registerd yet?<a href="signup">Register</a></small>
+	
+	<div class="googleAuth">
+		<app-google-auth></app-google-auth>
+	</div>
+</div>
+    
+	</div>
+
+<!-- <form class="form"  *ngIf="!data" #UserForm="ngForm">
+      
+			<h2>Login Form</h2>
+			<div class="login-inputs">
+			   <div class="input">
+		  <label for="email">Email:</label>
+		  <input type="email" placeholder="enter your email"
+		  name="userEmail" ngModel required email #UserEmail="ngModel"><br><br>
+		  <label for="password">Password:</label>
+		  <input type="password"  placeholder="enter your password"
+		  name="userPassword" ngModel required email #UserPassword="ngModel"><br><br>
+		 </div>
+		  <button class="btn btn-success" (click)="getData()">Login</button>
+		  <button class="btn btn-danger">Reset</button>
+		
+	  </div>
+		 <small>Not registerd yet?<a href="register">Register</a></small>
+	 
+		 </form> -->

@@ -1,0 +1,98 @@
+<header>
+    <div class="fluid-container">
+        <a href="#" routerlink="#" class="logo"><i class="fa-solid fa-bowl-food"></i>@Food Corner!</a>
+        <nav>
+            <ul>
+                <li *ngIf="!logedIn()" [routerLinkActive]="'active'"><a routerLink="home"><i class="fa-solid fa-house"></i>Home</a></li>
+                <li *ngIf="!logedIn()" [routerLinkActive]="'active'"><a routerLink="signup">SignUp</a></li>
+                <li *ngIf="logedIn()" [routerLinkActive]="'active'"><a routerLink="restaurent">Restaurent</a></li>
+                <li *ngIf="logedIn()" [routerLinkActive]="'active'"><a routerLink="menu">Menu</a></li>
+                <li *ngIf="logedIn()" [routerLinkActive]="'active'"><a routerLink="cart">Cart</a></li>
+                <!-- <li *ngIf="logedIn()" [routerLinkActive]="'active'" (click)="onLoggedOut()"><a routerLink="logout">Logout</a></li> -->
+                
+                <li class="dropdown" *ngIf="logedIn()">
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle><img src="{{imageupload}}" alt="" style="width:100px;height:100px;">
+                                </button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem (click)="detailsPopUp(popup)"  data-bs-toggle="modal" data-bs-target="#popup">Details</button>
+                                    <button ngbDropdownItem>Edit Profile
+                                        <input type="file" class="my-file-input" (change)="fileChangeEvent($event,popup1)" data-bs-toggle="modal" data-bs-target="#popup1" />
+                                    </button>
+                                    <div class="text-center">
+                                      <button (click)="onLoggedOut()" >Logout</button>
+                                   </div>
+                                </div>
+                            </div>
+                        
+                </li> 
+            
+            </ul>
+            
+
+        </nav>
+
+    </div>
+    
+</header>
+<!-- GOOGLE USER DETAILS -->
+<ng-template #popup let-modal style="width:60%;">
+    <div class="userDetails">
+   <div style="padding-left:100px;"><h2>User Details:</h2></div>
+   <div>
+    <h5><b>User Name:</b>{{googleData.name}}</h5>
+    <h5><b>User email:</b>{{googleData.email}}</h5>
+    <h5><b>User photo:</b><img src="{{googleData.photoUrl}}" alt=""></h5>
+   </div>
+</div>
+ </ng-template>
+
+
+
+ <!-- IMAGE CROP -->
+ <ng-template #popup1 let-modal >
+    <div>
+        <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 4"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imgLoad()"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"
+        
+    ></image-cropper>
+        
+    </div>
+    
+    <div class="col-md-4">
+        <h6>Image Preview</h6>
+       <img [src]="croppedImage" alt="IMG" style="width:200px;height:200px"/>
+       </div>
+       <div>
+        <button (click)="uploadImage()">Upload</button>
+       </div>
+    
+    </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="image-crop">
+                        
+     <app-image-crop></app-image-crop>
+</div>
+ <img src="{{imageupload}}" alt=""> -->

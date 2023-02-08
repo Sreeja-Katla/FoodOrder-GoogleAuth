@@ -1,0 +1,55 @@
+.fluid-container{
+    height: 500px;
+    /* height: fit-content; */
+}
+.card{
+    width:30%;
+    height: 200px;
+    margin: 180px 0px 0px 500px;
+    border: 2px solid whitesmoke;
+text-align: center;
+padding-top: 10px;
+}
+.card button{
+    width:100px;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+.removeItem{
+    width:100px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+tr{
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.quantity{
+    display: contents;
+   margin-left: 30px;
+
+}
+.quantity button{
+    width: 50px;
+    height: 40px;
+    margin: 10px;
+    background-color: lightslategray;
+    border-radius: 20px;
+}
+
+strong{
+    margin-left: 30px;
+   
+}
+.details{
+    display: flex;
+}
+.details h3{
+    margin-right: 500px;
+}
+.buttons button{
+    width: 110px;
+    margin-left: 20px;
+}

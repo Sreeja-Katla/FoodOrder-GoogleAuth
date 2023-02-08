@@ -1,0 +1,149 @@
+<div class="fluid-container">
+    <div class="card">
+        <div>
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep"
+                alt="image" class="img-fluid " style="height:200px;width: 250px;">
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/zpkkdkmvlj5cuvqbc50t"
+                alt="image" class="img-fluid " style=" height: 200px;width: 250px;">
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/s5ug2key6e2sptaxku5v"
+                alt="images" class="img-fluid " style=" height:200px;width: 250px;">
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/ifi2lbzxeu1hvsqrsip3"
+                alt="images" class="img-fluid " style="height:200px; width: 250px;">
+        </div>
+    </div>
+    <div>
+        <form class="form">
+            <div class="user-details1">
+                <div class="user-details">
+                    <label for="UserName"><b>UserName:</b></label>
+                    <input type="text" id="username" placeholder="enter your name">
+                </div>
+                <div class="user-details">
+                    <label for="email"><b>Email:</b></label>
+                    <input type="email" id="email" placeholder="enter your mail">
+                </div>
+            </div>
+            <div class="user-details2">
+                <div class="details">
+                    <label for="restaurent"><b>Restaurent Name:</b></label>
+                    <input type="text" id="restaurentname" placeholder="enter your restaurentname">
+                </div>
+                <div class="details">
+                    <button class="btn btn-warning" (click)="ownerMenu(popup)" data-bs-toggle="modal"
+                        data-bs-target="#popup">AddYourMenu</button>
+                </div>
+            </div>
+        </form> 
+
+    </div>
+    <hr>
+
+    <!-- ADDING DETAILS -->
+    <div class="fluid-component">
+        <div class="item-details">
+            <h2>this is added items</h2>
+            <ul>
+                <li *ngFor="let item of arrayItem;let i=index" class="item">
+                    <a>
+                        <img src="{{item.image}}" alt="imageUrl" style="width:100%; height:200px;">
+                        
+
+                        <h2 style="text-align:center;"><b>Item Name:{{item.itemname}}</b></h2>
+                        <h3 style="text-align:center;">Rs.:{{item.price}}</h3>
+                        <h4 style="text-align:center;">{{item.adress}}</h4>
+                        <div class="details-buttons">
+                            <button class="btn btn-warning" (click)="ShowDetails(i,view_details)"
+                                data-bs-toggle="modal1" data-bs-target="#view_details">view</button>
+                            <button class="btn btn-danger" (click)="deleteItem()">delete</button>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ADD ITEMS POPUP -->
+<ng-template #popup let-modal>
+    <div class="fluid-container" class="form myForm" *ngIf="show">
+        <form class="form1" [formGroup]="reactiveForm" #myForm='ngForm'>
+
+            <input type="text" id="itemName" placeholder="enter the Item name" formControlName="itemname">
+            <input type="text" id="image" placeholder="enter the image url1.." formControlName="image">
+            <input type="text" id="image2" placeholder="enter the image url2.." formControlName="image2">
+            <input type="text" id="image3" placeholder="enter the image url3.." formControlName="image3">
+            <input type="number" id="number" placeholder="enter the price" formControlName="price">
+
+            <div formArrayName="adress">
+                <ng-container *ngFor="let skill of reactiveForm.get('adress')['controls'];index as i">
+                    <textarea type="text" placeholder=" add your adress..." cols="5" rows="3"
+                        formControlName="{{i}}"></textarea>
+                </ng-container>
+                <button (click)="addAdress()">+AddMore</button>
+            </div>
+
+            <div class="button">
+
+                <input type="submit" value="Submit" class="btn btn-primary" (click)="onSubmit()">
+                <button type="reset" value="Clear" class="btn btn-danger" (click)="onClose()">Close</button>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+</ng-template>
+
+
+
+<!-- VIEW DETAILS POPUP -->
+<ng-template #view_details let-modal>
+
+    <div class="card" style="width:600px; height: 700px;" *ngIf="show">
+        <div class="Item-details">
+            <div class="item">
+
+                <div class="card-carousel">
+                    <ngb-carousel>
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img src={{itemDetail.image}} alt="Random first slide" />
+                            </div>
+                        </ng-template>
+
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img src={{itemDetail.image2}} alt="Random second slide" />
+                            </div>
+                        </ng-template>
+
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img src={{itemDetail.image3}} alt="Random third slide" />
+                            </div>
+                        </ng-template>
+
+                    </ngb-carousel>
+                </div>
+                
+
+            </div>
+            <h2 style="color: red; text-align: center;"><b>ItemName:</b>{{itemDetail.itemname}}</h2>
+            <h5 style="color: red; text-align: center;"><b>Price:</b>Rs. {{itemDetail.price}}</h5>
+            <p style="color:white;"><b>Adress:</b>{{itemDetail.adress}}</p>
+            <div style="display:flex ;">
+                <div class=" buttons">
+                    <button class="btn btn-warning" (click)="onClose()">Close</button>
+                    <button class="btn btn-danger" (click)="onOrder(itemDetail)">Order</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</ng-template>
